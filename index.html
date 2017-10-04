@@ -16,7 +16,34 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
+  const twitchUsers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
+  $.each(twitchUsers, function (index, val) {
+    $.getJSON("https://wind-bow.glitch.me/twitch-api/streams/" + val + "?callback=?", function(data) {
+      let status;
+      if (data.stream) {
+        status = "Online";
+      } else {
+        status = "Offline";
+      }
+      $.getJSON("https://wind-bow.glitch.me/twitch-api/channels/" + val + "?callback=?", function (data) {
+        if (data.status === null) {
+          return;
+        }
 
+        let streamHtml = "<div class='stream'>";
+        streamHtml += "<img class='stream-logo' src='" + data.logo + "'>";
+        streamHtml += data.display_name;
+        streamHtml += data.game + ": " + data.status;
+        streamHtml += "</div>";
+
+        if (status === "Online") {
+          $("#streams").prepend(streamHtml);
+        } else if (status === "Offline") {
+          $("#streams").append(streamHtml);
+        }
+      })
+    });
+  });
 </script>
 </body>
 </html>
