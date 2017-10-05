@@ -1,0 +1,74 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Helvetica, sans-serif;
+}
+
+main {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+#title {
+  padding: 18px 0 18px 48px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #524a4d;
+}
+
+.stream {
+  padding: 8px 12px;
+  margin-top: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stream-online {
+  background-color: #afc59c;
+}
+
+.stream-offline {
+  background-color: #415477;
+}
+
+.stream-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: solid 2px #ffffff;
+}
+
+.stream-name {
+  margin-left: 12px;
+  width: 200px;
+  text-align: center;
+}
+
+.stream-description {
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-style: italic;
+}
+
+.stream-online .stream-name a {
+  color: #415477;
+}
+.stream-online .stream-description {
+  color: #524a4d;
+}
+
+.stream-offline .stream-name a {
+  color: #afc59c;
+}
+
+.stream-offline .stream-description {
+  color: #7a93b0
+}
